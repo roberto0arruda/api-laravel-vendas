@@ -7,6 +7,7 @@ use Illuminate\Foundation\Http\FormRequest;
 /**
  * Class UserFormRequest
  * @package App\Http\Requests
+ * @property
  * @property int id
  * @property string name
  * @property string email
@@ -42,7 +43,7 @@ class UserFormRequest extends FormRequest
     {
         return [
             'name'         => 'required|max:255|min: 3',
-            'email'        => 'required|email|max:255',
+            'email'        => 'required|email|max:255|unique:users',
             'password'     => 'required|min:6',
             'cep'          => 'required|min:8',
             'street'       => 'required',
@@ -61,6 +62,7 @@ class UserFormRequest extends FormRequest
             'name.min'                => '- Nome deve conter no minimo 3 letras.',
             'email.email'             => '- Email inválido.',
             'email.required'          => '- E-mail é obrigatório.',
+            'email.unique'            => '- E-mail já existente no sistema.',
             'password.required'       => '- Senha é obrigatório.',
             'password.min'            => '- Senha deve conter no minimo 6 caracteres.',
             'cep.required'            => '- CEP é obrigatório.',

@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    public function novo(UserFormRequest $request)
+    public function new(UserFormRequest $request)
     {
         $user = new User();
 
@@ -24,6 +24,8 @@ class UserController extends Controller
         $user->state        = $request->state;
 
         $user->save();
+
+        return $user;
     }
 
     public function login(LoginFormRequest $request)
@@ -35,7 +37,7 @@ class UserController extends Controller
 
             return $user;
         } else {
-            return ['status'=>false];
+            return response()->json(['errors' => 'Usuário ou senha incorretos!'], 422);
         }
     }
 }
