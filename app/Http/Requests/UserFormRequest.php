@@ -41,15 +41,15 @@ class UserFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'         => ['required', 'max:255', 'min: 3'],
-            'email'        => ['required', 'email', 'max:255', 'unique:users'],
-            'password'     => ['required', 'min:6'],
-            'cep'          => ['required', 'min:8'],
-            'street'       => ['required'],
-            'number'       => ['required'],
-            'neighborhood' => ['required'],
-            'city'         => ['required'],
-            'state'        => ['required']
+            'name'         => 'required|max:255|min: 3',
+            'email'        => 'required|email|max:255',
+            'password'     => 'required|min:6',
+            'cep'          => 'required|min:8',
+            'street'       => 'required',
+            'number'       => 'required',
+            'neighborhood' => 'required',
+            'city'         => 'required',
+            'state'        => 'required'
         ];
     }
 
@@ -61,7 +61,6 @@ class UserFormRequest extends FormRequest
             'name.min'                => '- Nome deve conter no minimo 3 letras.',
             'email.email'             => '- Email inválido.',
             'email.required'          => '- E-mail é obrigatório.',
-            'email.unique'            => '- E-mail já existente.',
             'password.required'       => '- Senha é obrigatório.',
             'password.min'            => '- Senha deve conter no minimo 6 caracteres.',
             'cep.required'            => '- CEP é obrigatório.',

@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 
-Route::post('/cadastro-usuario', 'UserController@cadastrar');
+Route::post('/cadastro-usuario', 'UserController@novo');
 
 Route::post('/login', 'UserController@login');
 

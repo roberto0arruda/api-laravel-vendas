@@ -9,20 +9,19 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    public function cadastrar(UserFormRequest $request)
+    public function novo(UserFormRequest $request)
     {
         $user = new User();
 
         $user->name         = $request->name;
         $user->email        = $request->email;
-        $user->password     = $request->password;
+        $user->password     = bcrypt($request->password);
         $user->cep          = $request->cep;
         $user->street       = $request->street;
         $user->number       = $request->number;
         $user->neighborhood = $request->neighborhood;
         $user->city         = $request->city;
         $user->state        = $request->state;
-
 
         $user->save();
     }
