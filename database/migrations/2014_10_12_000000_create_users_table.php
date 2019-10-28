@@ -37,6 +37,19 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+
+        $user = new User();
+
+        $user->name         = 'Administrador';
+        $user->email        = 'admin@admin.com.br';
+        $user->password     = bcrypt('123456');
+        $user->cep          = '69093805';
+        $user->street       = 'Rua Teste';
+        $user->number       = '100';
+        $user->neighborhood = 'Bairro Teste';
+        $user->city         = 'Manaus';
+        $user->state        = 'AM';
+        $user->save();
     }
 
     /**

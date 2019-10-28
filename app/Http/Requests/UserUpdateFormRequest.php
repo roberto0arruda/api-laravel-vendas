@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
- * Class UserFormRequest
+ * Class UserUpdateFormRequest
  * @package App\Http\Requests
  * @property
  * @property int id
@@ -22,7 +22,7 @@ use Illuminate\Foundation\Http\FormRequest;
  * @property \DateTime updated_at
  */
 
-class UserFormRequest extends FormRequest
+class UserUpdateFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -43,8 +43,7 @@ class UserFormRequest extends FormRequest
     {
         return [
             'name'         => 'required|max:255|min: 3',
-            'email'        => "required|email|max:255|unique:users",
-            'password'     => 'required|min:6',
+            'email'        => "required|email|max:255|unique:users,email, {$this->id}",
             'cep'          => 'required|min:8',
             'street'       => 'required',
             'number'       => 'required',
@@ -63,8 +62,6 @@ class UserFormRequest extends FormRequest
             'email.email'             => '- Email inválido.',
             'email.required'          => '- E-mail é obrigatório.',
             'email.unique'            => '- E-mail já existente no sistema.',
-            'password.required'       => '- Senha é obrigatório.',
-            'password.min'            => '- Senha deve conter no minimo 6 caracteres.',
             'cep.required'            => '- CEP é obrigatório.',
             'cep.min'                 => '- CEP inválido.',
             'street.required'         => '- Rua é obrigatório.',
