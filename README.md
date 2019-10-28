@@ -10,4 +10,6 @@ php artisan passport:keys
 
 php artisan passport:client --client
 
+php artisan passport:client --personal
+
 php artisan serve
