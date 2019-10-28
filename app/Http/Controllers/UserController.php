@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\LoginFormRequest;
 use App\Http\Requests\UserFormRequest;
 use App\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
@@ -37,7 +38,7 @@ class UserController extends Controller
 
             return $user;
         } else {
-            return response()->json(['errors' => 'Usuário ou senha incorretos!'], 422);
+            return ['status' => false];
         }
     }
 }
