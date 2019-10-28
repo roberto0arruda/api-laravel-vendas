@@ -28,4 +28,9 @@ class SaleProduct extends Model
     protected $fillable = [
         'id_sale', 'id_product', 'quant', 'sale_price',
     ];
+
+    public function sale()
+    {
+        return $this->hasOne(Sale::class, 'id','id_sale');
+    }
 }

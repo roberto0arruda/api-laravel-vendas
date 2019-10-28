@@ -27,4 +27,14 @@ class Sale extends Model
     protected $fillable = [
         'number_sales', 'id_user', 'total_price',
     ];
+
+    public function user()
+    {
+        return $this->hasOne(User::class, 'id','id_user');
+    }
+
+    public function saleProducts ()
+    {
+        return $this->hasMany(SaleProduct::class, 'id_sale', 'id');
+    }
 }
