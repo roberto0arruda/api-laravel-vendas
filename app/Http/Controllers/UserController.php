@@ -25,8 +25,6 @@ class UserController extends Controller
         $user->state        = $request->state;
 
         $user->save();
-
-        return $user;
     }
 
     public function update(UserUpdateFormRequest $request, $id)
